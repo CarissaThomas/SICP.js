@@ -1,3 +1,5 @@
+
+//Section 1.2.2
 //fibonacci as recurisve problem 
 function fibonacciRecursion(n) {
     if (n = 0) {
