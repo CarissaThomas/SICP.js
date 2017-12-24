@@ -29,10 +29,50 @@ function fibonacciIteration(a, b, count) {
     }
 }
 
+//1.16 
+function iterativeExponents(b,n){
+    return iterative_E(b,n,1);
+}
+
+function iterative_E(b,n,a){
+    if(a === 0){
+        return a;
+    } else if(is_even(n)){
+        
+       return a
+    } else {
+       return expt_iter(b, a - 1,b * a)
+    }
+}
+
+function is_even(n) {
+   return n % 2 === 0;
+}
+////////////////
+function expt(b,n) {
+   return expt_iter(b,n,1);
+}
+function expt_iter(b,counter,product) {
+   if (counter === 0) 
+        return product;
+   else return expt_iter(b,
+                         counter - 1, 
+                         b * product);
+}  
 
 
-
-
+///////////
+          
+function fast_expt(b,n) {
+   if (n === 0)
+        return 1;
+   else if (is_even(n)) 
+        return square(fast_expt(b, n / 2));
+   else return b * fast_expt(b, n - 1);
+}
+function is_even(n) {
+   return n % 2 === 0;
+}
 
 
 
