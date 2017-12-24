@@ -30,69 +30,83 @@ function fibonacciIteration(a, b, count) {
 }
 
 //1.16 
-function iterativeExponents(b,n){
-    return iterative_E(b,n,1);
-}
-
-function iterative_E(b,n,a){
-    if(a === 0){
-        return a;
-    } else if(is_even(n)){
-        
-       return a
-    } else {
-       return expt_iter(b, a - 1,b * a)
-    }
-}
-
-function is_even(n) {
-   return n % 2 === 0;
-}
-////////////////
 function expt(b,n) {
    return expt_iter(b,n,1);
 }
 function expt_iter(b,counter,product) {
    if (counter === 0) 
         return product;
-   else return expt_iter(b,
-                         counter - 1, 
-                         b * product);
-}  
-
-
-///////////
-          
-function fast_expt(b,n) {
-   if (n === 0)
-        return 1;
-   else if (is_even(n)) 
-        return square(fast_expt(b, n / 2));
-   else return b * fast_expt(b, n - 1);
+   if else(is_even(n)){
+     return expt_iter(square(b), n/2, counter);
+   } else {
+     return expt_iter(b, counter - 1, b * product);
+   } 
+} 
+function square(x){
+    return x * x;
 }
+
 function is_even(n) {
    return n % 2 === 0;
 }
 
+//1.17
+function times(a,b) {
+   if (b === 0){
+        return 0;
+   } if else(is_even(b)){
+      return double(a) * halve(b); 
+   }
+   else{
+     return a + a * (b - 1);
+   } 
+}
 
+function double(x){
+    x * 2;
+}
 
+function halve(x){
+    if(x % 2 === 0){
+        return x/2;
+    }
+}
 
+function is_even(n) {
+   return n % 2 === 0;
+}
 
+//1.18 (create an interative process with double/halve)
 
+function multi(b,n) {//3, 4(12)
+   return mult_iter(b,n,1);
+}
+function mult_iter(b,counter,product) {
+   if (counter === 0) 
+        return product;
+   if else(is_even(n)){
+     return mult_iter(double(b), halve(n), counter);
+   } else {
+     return mult_iter(b, counter - 1, b * product);
+   } 
+} 
+(iter (+ accumulator a) a (- b 1))))) 
 
+function double(x){
+    x * 2;
+}
 
+function halve(x){
+    if(x % 2 === 0){
+        return x/2;
+    }
+}
 
+function is_even(n) {
+   return n % 2 === 0;
+}
 
-
-
-
-
-
-
-
-
-
-
+//1.19
 
 
 
