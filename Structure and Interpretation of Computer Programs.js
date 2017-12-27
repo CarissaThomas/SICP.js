@@ -192,4 +192,116 @@ function search-iter(first){
 search-for-primes(1000, 1500);
 
 //1.24
+function smallest_divisor(n){
+    find_divisor(n, 2);
+}
+
+function find_divisor(n,test_divisor) {
+   if (square(test_divisor) > n) 
+        return n;
+   else if (divides(test_divisor,n))
+        return test_divisor;
+   else return find_divisor(n, next(test_divisor));
+}
+
+function next(test_divisor) {
+	if(test_divisor === 2){
+		return 3;
+	} else {
+		return test_divisor + 2;
+	}
+}
+
+function divides(a,b) {
+   return b % a === 0;
+}
+
+//1.25
+
+function timed_prime_test(n) {
+   start_prime_test(n);
+}
+
+function fast_is_prime(n,start_time) {
+   if (is_prime(n))
+      return report_prime(n);
+}
+
+
+function fast_is_prime(n,times) {
+   if (times === 0)
+        return true;
+   else if (fermat_test(n))
+        return fast_is_prime(n, times - 1);
+   else return false;
+}
+
+//1.26
+//The remainder operation inside the original expmod implementation, keeps the numbers being squared less than the number 
+//tested for primality m. fast-expt however squares huge numbers of a^m size.
+
+//1.27
+
+function smallest_divisor(n) {
+   return find_divisor(n,2);
+}
+function find_divisor(n,test_divisor) {
+   if (square(test_divisor) > n) 
+        return n;
+   else if (divides(test_divisor,n))
+        return test_divisor;
+   else return find_divisor(n, test_divisor + 1);
+}
+function divides(a,b) {
+   return b % a === 0;
+}
+
+function square(x){
+    return x * x;
+}
+
+smallest_divisor(561);
+
+//1.28 (for finding prime numbers)
+function is_even(n) {
+   return n % 2 === 0;
+}
+          
+function square(x) { return x * x; }
+                
+function expmod(base,exp,m) {
+   if (exp === 0) 
+        return 1;
+   else if (is_even(exp))
+        return square(expmod(base,exp/2,m)) % m;
+   else return (base * expmod(base,exp - 1,m)) % m;
+}
+          
+function random(n) {
+   return Math.floor(Math.random() * n);
+}
+          
+function fermat_test(n) {
+   function try_it(a) {
+      return expmod(a,n,n) === a;
+   }
+   return try_it(1 + random(n - 1));
+}
+          
+function fermat_test(n) {
+   function try_it(a) {
+      return expmod(a,n,n) === a;
+   }
+   return try_it(1 + random(n - 1));
+}
+function fast_is_prime(n,times) {
+   if (times === 0)
+        return true;
+   else if (fermat_test(n))
+        return fast_is_prime(n, times - 1);
+   else return false;
+}
+
+fast_is_prime(91,3);
+
 
