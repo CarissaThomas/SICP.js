@@ -236,33 +236,14 @@ function fast_is_prime(n,times) {
    else return false;
 }
 
-//1.26
+/////////////////////////////////1.26
 //The remainder operation inside the original expmod implementation, keeps the numbers being squared less than the number 
 //tested for primality m. fast-expt however squares huge numbers of a^m size.
 
-//1.27
 
-function smallest_divisor(n) {
-   return find_divisor(n,2);
-}
-function find_divisor(n,test_divisor) {
-   if (square(test_divisor) > n) 
-        return n;
-   else if (divides(test_divisor,n))
-        return test_divisor;
-   else return find_divisor(n, test_divisor + 1);
-}
-function divides(a,b) {
-   return b % a === 0;
-}
-
-function square(x){
-    return x * x;
-}
-
-smallest_divisor(561);
-
-//1.28 (for finding prime numbers)
+//////////////////////////////////Fermats Little Theorem Example:
+function square(x) { return x * x; }
+                
 function is_even(n) {
    return n % 2 === 0;
 }
@@ -294,7 +275,7 @@ function fermat_test(n) {
    }
    return try_it(1 + random(n - 1));
 }
-function fast_is_prime(n,times) {
+function fast_is_prime(n,times) {//determines number of checks to run 
    if (times === 0)
         return true;
    else if (fermat_test(n))
@@ -304,4 +285,29 @@ function fast_is_prime(n,times) {
 
 fast_is_prime(91,3);
 
+//////////////////////////////////1.28 - Carmichael numbers fool the fermats test 
+function is_even(n) {
+   return n % 2 === 0;
+}
+          
+function square(x) { return x * x; }
+                
+function expmod(base,exp,m) {//base is now not a random number but between 1 and n-1
+   if (exp === 0) 
+        return 1;
+   else if (is_even(exp))//is it even 
+        return square(expmod(base,exp/2,m)) % m;
+   else return (base * expmod(base,exp - 1,m)) % m;
+}
+
+function fermat_test(a, n){//change the vbase 
+	
+}
+
+
+fermat_test(1, 91)
+
+
+
+//1.29
 
