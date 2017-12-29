@@ -250,11 +250,11 @@ function is_even(n) {
           
 function square(x) { return x * x; }
                 
-function expmod(base,exp,m) {
+function expmod(base,exp,m) {//base is our random number, others are our potential prime number 
    if (exp === 0) 
         return 1;
-   else if (is_even(exp))
-        return square(expmod(base,exp/2,m)) % m;
+   else if (is_even(exp))//if the number is even use successive squaring 
+        return square(expmod(base,exp/2,m)) % m;//recursive, random number smaller than n compute remaider of a to power of n modulo n
    else return (base * expmod(base,exp - 1,m)) % m;
 }
           
@@ -263,18 +263,12 @@ function random(n) {
 }
           
 function fermat_test(n) {
-   function try_it(a) {
+   function try_it(a) {//try the random number in expmod
       return expmod(a,n,n) === a;
    }
-   return try_it(1 + random(n - 1));
+   return try_it(1 + random(n - 1));//generate a as a random number
 }
           
-function fermat_test(n) {
-   function try_it(a) {
-      return expmod(a,n,n) === a;
-   }
-   return try_it(1 + random(n - 1));
-}
 function fast_is_prime(n,times) {//determines number of checks to run 
    if (times === 0)
         return true;
@@ -300,12 +294,19 @@ function expmod(base,exp,m) {//base is now not a random number but between 1 and
    else return (base * expmod(base,exp - 1,m)) % m;
 }
 
-function fermat_test(a, n){//change the vbase 
-	
+function fermat_test(n, a){//change the vbase 
+   function try_it(a) {//try the random number in expmod'
+     if(a < n - 1){
+	 return expmod(a,n,n) === a;
+     } else {
+     	console.log('The entire range has been tested');
+     }
+   }
+   return try_it(1 + a);//generate a as a random number
 }
 
 
-fermat_test(1, 91)
+fermat_test(91,1)
 
 
 
