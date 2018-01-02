@@ -310,5 +310,50 @@ fermat_test(91,1)
 
 
 
-//1.29
+///////////////////////////////1.29 MILLER-RABIN TEST 
+function square(x) { return x * x; }
+                
+function is_even(n) {
+   return n % 2 === 0;
+}
+          
+function square(x) { return x * x; }
+
+function expmod(base,exp,m) {//base is our random number, others are our potential prime number 
+   if (exp === 0) 
+        return 1;
+   else if (is_even(exp))//if the number is even use successive squaring 
+           return square(check_nontrivial_square(base,exp/2,m)) % m;//number not equal to 1 or n - 1 whose sqaure root is equal to 1 modulo n, then not prime
+   else return (base * expmod(base,exp - 1,m)) % m;//if number is not even there is a different set of tests 
+}
+
+function check_nontrivial_square(base,exp,m){
+   if((base === 1 || base === exp - 1) && square(base) === 1 % exp){
+	console.log('The number is not prime');
+	return 0;
+   } else {
+       return expmod(base,exp,m);
+   }
+}
+          
+function random(n) {
+   return Math.floor(Math.random() * n);
+}
+          
+function rabin_miller_test(n) {
+   function try_it(a) {//try the random number in expmod
+      return expmod(a,n,n) === a;
+   }
+   return try_it(1 + random(n - 1));//generate a as a random number
+}
+          
+function fast_is_prime(n,times) {//determines number of checks to run 
+   if (times === 0)
+        return true;
+   else if (rabin_miller_test(n))
+        return fast_is_prime(n, times - 1);
+   else return false;
+}
+
+fast_is_prime(n,100);
 
