@@ -1,0 +1,28 @@
+//sum as iterative function 
+
+function sum(term,a,next,b){
+  function iter(a,result){
+    if(a > b){
+      console.log('The result:', result);
+      return result;
+    } else {
+      return iter(next(a),result + term(a));//next = inc, term = cube
+    }
+  }
+  return iter(a, 0);//result starts as 0
+}
+
+
+function inc(n) {
+   return n + 1;
+}
+
+function cube(x) {
+   return x * x * x;
+}
+
+function sum_cubes(a,b) {
+   return sum(cube,a,inc,b);//calls main function with params and selected functions
+}
+
+sum_cubes(6,7);
