@@ -2,10 +2,10 @@
 
 function sum(term,a,next,b){
   function iter(a,result){
-    if(a > b){
+    if(a > b){//if we are out of our range, function is complete, return the result 
       console.log('The result:', result);
       return result;
-    } else {
+    } else {//increment a update the point in the range, add our previous result to the cube of our previous number 
       return iter(next(a),result + term(a));//next = inc, term = cube
     }
   }
