@@ -1,3 +1,48 @@
+//the same as sum but with multiplication as its function
+function product(term,a,next,b){
+   if (a > b)
+        return 1;
+   else return term(a) * 
+               multiplication(term, next(a),next,b);
+}
+
+//these are defined to compute pi
+function next(x) {
+   return x + 1;
+}
+
+function pi-term(n){
+  if(even(n)){
+    return ((n + 2) / (n + 1))
+  } else {
+    return ((n + 1) / (n + 2))
+  }
+}
+
+function even(n) {
+   return n % 2 === 0;
+}
+
+function multiply_products(a,b) {
+   return product(pi-term 1 next 6) * 4;//calls main function with params and selected functions
+}
+
+multiply_products(6,7);
+
+
+//Iterative Version 
+function product(term,a,next,b){
+  function iter(a, result){//is our counter 
+    if (a > b){
+       return 1;
+    } else {
+      return term(a) * multiplication(term, next(a),next,b);
+    }
+  }
+  return iter(a,0);//counter starts at 0
+}
+
+
 function sum(term,a,next,b){
   function iter(a,result){
     if(a > b){//if we are out of our range, function is complete, return the result 
@@ -10,31 +55,4 @@ function sum(term,a,next,b){
   return iter(a, 0);//result starts as 0
 }
 
-function sum(term,a,next,b) {
-   if (a > b)
-        return 0;
-   else return term(a) + 
-               sum(term,next(a),next,b);
-}
 
-//the same as sum but with multiplication as its function
-function multiplication(term,a,next,b){
-   if (a > b)
-        return 0;
-   else return term(a) * 
-               multiplication(term,next(a),next,b);
-}
-//these are defined to compute pi
-function inc(n) {
-   return n + 1;
-}
-
-function times(x) {
-   return x * x * x;
-}
-
-function (a,b) {
-   return multiplication(times,a,inc,b);//calls main function with params and selected functions
-}
-
-multiply_products();
