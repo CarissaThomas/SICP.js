@@ -1,0 +1,33 @@
+ //1.33
+ 
+sum(identity,1,inc,10);
+ 
+ function accumulate(combiner,null-value,term,a,next,b){
+  if(a > b){
+    return null_value;
+  } else {
+    return combiner(term(a), accumulate(combiner,null-value,term,a,next,b));
+  }
+ }
+ 
+ function sum(term,a,next,b){
+   return accumulate(accumulate,term + 0,term,a,next,b);
+ }
+ 
+ function product(){
+      return accumulate(accumulate,term * 1,term,a,next,b);
+ }
+
+
+//As iterative function
+
+function accumulate(combiner,null-value,term,a,next,b){
+  function iter(a,result){
+    if(a > b){
+      return result;
+    } else {
+      iter(next(a), combiner(result, term(a)))
+    }
+  }
+  return iter(a, null_value);
+}
