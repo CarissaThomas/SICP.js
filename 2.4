@@ -1,0 +1,8 @@
+//2.4 
+
+function pair(x,y) {
+   return function(m) { return m(x,y); }
+}
+function head(z) {
+   return z(function(p,q) { return q; });//for modification to return tails 
+}
