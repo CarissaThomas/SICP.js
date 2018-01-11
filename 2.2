@@ -1,0 +1,54 @@
+//2.2 
+//Define constructor make_segment 
+//selectors start_segment end_segment --> rep of segments as points
+//a point is represented as a pair of numbers (x,y) 
+//Define constructor make_point with selectors x_point and y_point 
+//using selectors and constructors, create midpoint_segment that takes line segment as an arugment and returns the midpoint
+
+function make_point(x,y){
+  return pair(x,y);
+}
+
+function make_segment(start_point,end_point) {
+  return pair(start_point,end_point);
+}
+
+function segement(){
+  return make_segment(make_point(2,3),make_point(10,15));
+}
+
+function start_segment(segment){
+  return head(seg);
+}
+
+function end_segment(segment){
+  return tail(seg);
+}
+
+function print_point(p) {
+   newline();
+   display("(" + x_point(p) +
+           "," + y_point(p) +
+           ")");
+}
+
+function x_point(p){
+  return head(p);
+}
+
+function y_point(p){
+  return tail(p);
+}
+
+function average(a,b){
+  return (a + b) / 2.0;
+}
+
+function midpoint_segment(segment){
+  var a = start_segment(segment);
+  var b = end_segment(segment);
+  make_point( average(x_point(a), x_point(b)), average(y_point(a), y_point(b)) );
+  average(a,b);
+}
+
+print_point(midpoint_segment(segment()))
