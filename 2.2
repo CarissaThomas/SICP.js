@@ -9,12 +9,12 @@ function make_point(x,y){
   return pair(x,y);
 }
 
-function make_segment(start_point,end_point) {
-  return pair(start_point,end_point);
+function make_segment(start_point,end_point) {//points paired up to a segment 
+  return pair(start_point,end_point);//return to run the midpoint_segment
 }
 
-function segement(){
-  return make_segment(make_point(2,3),make_point(10,15));
+function segement(){//makes a segement out of our 2 points, with 4 coordinates
+  return make_segment(make_point(2,3),make_point(10,15));//creates two points out of two x,y pairs 
 }
 
 function start_segment(segment){
@@ -44,11 +44,10 @@ function average(a,b){
   return (a + b) / 2.0;
 }
 
-function midpoint_segment(segment){
-  var a = start_segment(segment);
-  var b = end_segment(segment);
-  make_point( average(x_point(a), x_point(b)), average(y_point(a), y_point(b)) );
-  average(a,b);
+function midpoint_segment(segment){//takes our segment as a parameter
+  var a = start_segment(segment);//head
+  var b = end_segment(segment);//tail
+  return make_point( average(x_point(a), x_point(b)), average(y_point(a), y_point(b)) );//get the average of the head and tail of each of the head and tail of the segment
 }
 
-print_point(midpoint_segment(segment()))
+print_point(midpoint_segment(segment()))//run segment function first 
