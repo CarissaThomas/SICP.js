@@ -1,0 +1,42 @@
+//2.9
+//The width of interval: half the difference of the lower and upper bounds 
+//The width of the result combining two intervals is a function only of the widths of the argument intervals 
+//Show that the width of the sum of 2 intervals is a function only of the widths of the intervals being added
+
+//add two intervals 
+//get the width of combined intervals 
+//demonstrate that the width of the indivdual intervals effects the combined result of the combined interval 
+
+
+
+function upper_bound(interval){
+  return Math.max(interval);
+}
+
+function lower_bound(interval){
+  return Math.min(interval);
+}
+
+function width_interval(x) {
+    return (upper_bound(x) - lower_bound(x)) * .5;
+}
+
+function add_interval(x,y) {
+   return make_interval(lower_bound(x) + lower_bound(y),
+                        upper_bound(x) + upper_bound(y));
+}
+
+function sub_interval(x,y) {
+   return make_interval(lower_bound(x) - upper_bound(y),
+                        lower_bound(x) - upper_bound(y));
+}
+
+
+function make_interval(a,b) {
+   return pair(a,b);
+}
+
+width_interval(add_interval(make_interval(1,2),make_interval(3,5)));
+width_interval(sub_interval(make_interval(1,2),make_interval(3,5)));
+
+
