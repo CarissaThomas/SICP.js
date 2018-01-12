@@ -1,0 +1,10 @@
+//2.8
+
+function sub_interval(x,y) {
+   return make_interval(lower_bound(x) - upper_bound(y),
+                        lower_bound(x) - upper_bound(y));
+}
+
+function make_interval(a,b) {
+   return pair(a,b);
+}
