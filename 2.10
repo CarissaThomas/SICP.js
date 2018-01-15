@@ -1,0 +1,58 @@
+function upper_bound(interval){
+  return Math.max(interval);
+}
+
+function lower_bound(interval){
+  return Math.min(interval);
+}
+
+function width_interval(x) {
+    return (upper_bound(x) - lower_bound(x)) * .5;
+}
+
+function add_interval(x,y) {
+   return make_interval(lower_bound(x) + lower_bound(y),
+                        upper_bound(x) + upper_bound(y));
+}
+
+function sub_interval(x,y) {
+   return make_interval(lower_bound(x) - upper_bound(y),
+                        lower_bound(x) - upper_bound(y));
+}
+
+function div_interval(x,y) {
+   return make_interval(lower_bound(x)/upper_bound(y),
+                        lower_bound(x)/upper_bound(y));
+}
+
+function mult_interval(x,y) {//intervals the same width, mult is then different 
+   return make_interval(lower_bound(x) * upper_bound(y)
+                        lower_bound(x) * upper_bound(y));
+}
+
+function make_interval(a,b,c,d) {
+  if(Math.abs(a) + Math.abs(b) === Math.abs(c) + Math.abs(d)){
+    intervalBeforeMult = true; 
+    var multInterval1 = mult_interval(a,b);
+    var multInterval2 = mult_interval(c,d);
+    postMultDivCheck(multInterval1,multInterval2);
+  } 
+   return pair(a,b);
+}
+
+function postMultDivCheck(multInterval1,multInterval2){
+  if(multInterval1 === multInterval2){
+    console.log('two intervals are not a function only of the widths of the intervals being mutiplied/divided');
+  }
+}
+
+function checkMultDiv(interval1, interval2){
+  var a = make_interval(interval1[0],interval1[1],interval1[2],interval1[3])));
+  var b = make_interval(interval2[0],interval2[1],interval2[2],interval2[3])));
+}
+
+
+checkMultDiv(interval1, interval2);
+var interval1 = [0,10,0,2];
+var interval2 = [-5,5,-1,1];
+var intervalBeforeMult = false; 
