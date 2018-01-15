@@ -1,3 +1,15 @@
+
+//2.9
+//The width of interval: half the difference of the lower and upper bounds 
+//The width of the result combining two intervals is a function only of the widths of the argument intervals 
+//Show that the width of the sum of 2 intervals is a function only of the widths of the intervals being added
+
+//add two intervals 
+//get the width of combined intervals 
+//demonstrate that the width of the indivdual intervals effects the combined result of the combined interval 
+
+
+
 function upper_bound(interval){
   return Math.max(interval);
 }
@@ -30,29 +42,17 @@ function mult_interval(x,y) {//intervals the same width, mult is then different
                         lower_bound(x) * upper_bound(y));
 }
 
-function make_interval(a,b,c,d) {
-  if(Math.abs(a) + Math.abs(b) === Math.abs(c) + Math.abs(d)){
-    intervalBeforeMult = true; 
-    var multInterval1 = mult_interval(a,b);
-    var multInterval2 = mult_interval(c,d);
-    postMultDivCheck(multInterval1,multInterval2);
-  } 
+function make_interval(a,b) {
    return pair(a,b);
 }
 
-function postMultDivCheck(multInterval1,multInterval2){
-  if(multInterval1 === multInterval2){
-    console.log('two intervals are not a function only of the widths of the intervals being mutiplied/divided');
+function multDivisionCheck(a,b){
+  if(a !== b){
+    console.log('two intervals are not a function only of the widths of the intervals being divided/multiplied');
   }
 }
 
-function checkMultDiv(interval1, interval2){
-  var a = make_interval(interval1[0],interval1[1],interval1[2],interval1[3])));
-  var b = make_interval(interval2[0],interval2[1],interval2[2],interval2[3])));
-}
+multDivisionCheck(a,b);
+var a = width_interval(mult_interval(make_interval(0,10),make_interval(0,2)));
+var b = width_interval(mult_interval(make_interval(-5,5),make_interval(-1,1)));
 
-
-checkMultDiv(interval1, interval2);
-var interval1 = [0,10,0,2];
-var interval2 = [-5,5,-1,1];
-var intervalBeforeMult = false; 
