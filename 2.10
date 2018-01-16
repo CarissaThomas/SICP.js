@@ -33,6 +33,12 @@ function sub_interval(x,y) {
 }
 
 function div_interval(x,y) {
+  if(y === 0){
+    console.log('cannot divide interval by 0');
+    break;
+  } else {
+    mult_interval(x, (make_interval(1.0 / upper-bound(y), 1.0 / lower-bound(y)) ));
+  }
    return make_interval(lower_bound(x)/upper_bound(y),
                         lower_bound(x)/upper_bound(y));
 }
