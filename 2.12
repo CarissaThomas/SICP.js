@@ -1,0 +1,35 @@
+//2.12
+
+function make_center_width(c,w) {
+   return make_interval(c - w, c + w);
+}
+
+function make_interval(a,b) {
+   return pair(a,b);
+}
+
+function upper_bound(interval){
+  return Math.max(interval);
+}
+
+function lower_bound(interval){
+  return Math.min(interval);
+}
+
+
+function center(i) {
+   return (lower_bound(i) + upper_bound(i)) / 2;
+}
+
+function percent-tolerance(j){//resistor specifications 
+  center();
+  percent();
+}
+
+function width(i) {
+   return (upper_bound(i) - lower_bound(i)) / 2;
+}
+
+function make_center_percent(i, j){//takes a center and percentage tolerance, produces the desired interval 
+  
+}
